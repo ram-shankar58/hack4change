@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Button, TextField, MenuItem, FormControl, InputLabel, Select, Snackbar, Alert, Card, CardContent } from '@mui/material';
+import { Snackbar, Alert, Typography, Grid, Card, CardContent } from '@mui/material';
 import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
+import 'bulma/css/bulma.min.css';
 
-// import Layout from '../../layouts/protolayout';
+// Define the months, states, and districts
 const months = [
   { value: 'January', label: 'January' },
   { value: 'February', label: 'February' },
@@ -22,6 +23,7 @@ const districts = [
   // Add other districts as needed
 ];
 
+// Define the data for the chart
 const data = [
   { name: 'Jan', uv: 400, pv: 2400, amt: 2400 },
   { name: 'Feb', uv: 300, pv: 2210, amt: 2290 },
@@ -29,6 +31,7 @@ const data = [
   { name: 'Apr', uv: 278, pv: 2000, amt: 2181 }
 ];
 
+// Define the CropRecommendation component
 const CropRecommendation = () => {
   const [month, setMonth] = useState('');
   const [state, setState] = useState('');
@@ -40,6 +43,7 @@ const CropRecommendation = () => {
   const [showRecommendations, setShowRecommendations] = useState(false);
   const [warning, setWarning] = useState('');
 
+  // Define the handleSubmit function
   const handleSubmit = () => {
     if (!month || !state || !district) {
       setWarning('Please fill out all mandatory fields.');
@@ -50,146 +54,152 @@ const CropRecommendation = () => {
     setWarning('');
   };
 
+  // Return the JSX structure
   return (
-    <div style={{ padding: '20px', backgroundColor: '#f4f4f4', minHeight: '100vh' }}>
-      <Typography variant="h4" gutterBottom style={{ textAlign: 'center', marginBottom: '20px' }}>
-        Crop Recommendation System
-      </Typography>
-      <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
-          <FormControl fullWidth variant="outlined">
-            <InputLabel>Current Month</InputLabel>
-            <Select value={month} onChange={(e) => setMonth(e.target.value)} label="Current Month">
-              {months.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <FormControl fullWidth variant="outlined">
-            <InputLabel>State</InputLabel>
-            <Select value={state} onChange={(e) => setState(e.target.value)} label="State">
-              {states.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <FormControl fullWidth variant="outlined">
-            <InputLabel>District</InputLabel>
-            <Select value={district} onChange={(e) => setDistrict(e.target.value)} label="District">
-              {districts.map((option) => (
-                <MenuItem key={option.value} value={option.value}>
-                  {option.label}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="Temperature (optional)"
-            value={temperature}
-            onChange={(e) => setTemperature(e.target.value)}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="N Level (optional)"
-            value={nLevel}
-            onChange={(e) => setNLevel(e.target.value)}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="pH of Soil (optional)"
-            value={ph}
-            onChange={(e) => setPh(e.target.value)}
-          />
-        </Grid>
-        <Grid item xs={12} sm={6}>
-          <TextField
-            fullWidth
-            variant="outlined"
-            label="Soil Humidity (optional)"
-            value={humidity}
-            onChange={(e) => setHumidity(e.target.value)}
-          />
-        </Grid>
-        <Grid item xs={12}>
-          <Button variant="contained" color="primary" onClick={handleSubmit}>
-            Get Recommendations
-          </Button>
-        </Grid>
-      </Grid>
+    <div className="section" style={{ backgroundColor: '#2d3436', minHeight: '100vh', color: '#dfe6e9' }}>
+      <div className="container">
+        <div className="box has-background-dark p-6">
+          <h1 className="title is-2 has-text-centered has-text-white">Crop Recommendation System</h1>
+          <div className="columns is-multiline">
+            <div className="column is-half">
+              <div className="field">
+                <label className="label has-text-white">Current Month</label>
+                <div className="control">
+                  <div className="select is-fullwidth">
+                    <select className="has-background-light has-text-dark" value={month} onChange={(e) => setMonth(e.target.value)}>
+                      <option value="">Select month</option>
+                      {months.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="field">
+                <label className="label has-text-white">State</label>
+                <div className="control">
+                  <div className="select is-fullwidth">
+                    <select className="has-background-light has-text-dark" value={state} onChange={(e) => setState(e.target.value)}>
+                      <option value="">Select state</option>
+                      {states.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="field">
+                <label className="label has-text-white">District</label>
+                <div className="control">
+                  <div className="select is-fullwidth">
+                    <select className="has-background-light has-text-dark" value={district} onChange={(e) => setDistrict(e.target.value)}>
+                      <option value="">Select district</option>
+                      {districts.map((option) => (
+                        <option key={option.value} value={option.value}>
+                          {option.label}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
+              </div>
+              <div className="field">
+                <label className="label has-text-white">Temperature</label>
+                <div className="control">
+                  <input className="input has-background-light has-text-dark" type="number" value={temperature} onChange={(e) => setTemperature(e.target.value)} />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label has-text-white">N Level</label>
+                <div className="control">
+                  <input className="input has-background-light has-text-dark" type="number" value={nLevel} onChange={(e) => setNLevel(e.target.value)} />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label has-text-white">pH Level</label>
+                <div className="control">
+                  <input className="input has-background-light has-text-dark" type="number" value={ph} onChange={(e) => setPh(e.target.value)} />
+                </div>
+              </div>
+              <div className="field">
+                <label className="label has-text-white">Humidity</label>
+                <div className="control">
+                  <input className="input has-background-light has-text-dark" type="number" value={humidity} onChange={(e) => setHumidity(e.target.value)} />
+                </div>
+              </div>
+              <div className="field">
+                <div className="control">
+                  <button className="button is-primary" onClick={handleSubmit}>Submit</button>
+                </div>
+              </div>
+            </div>
+            <div className="column is-half">
+              <div className="box has-background-light">
+                <h2 className="title is-4 has-text-centered has-text-primary">Recommendations</h2>
+                {showRecommendations ? (
+                  <div>
+                    <p className="has-text-dark">Here are the recommendations based on your inputs:</p>
+                    <div className="columns is-multiline" style={{ marginTop: '20px' }}>
+                      <div className="column is-half">
+                        <Card style={{ backgroundColor: '#dff9fb' }}>
+                          <CardContent>
+                            <Typography variant="h6" gutterBottom>
+                              Rice
+                            </Typography>
+                            <Typography variant="body1">Yearly throughout</Typography>
+                            <Typography variant="body1">Profit: High</Typography>
+                          </CardContent>
+                        </Card>
+                      </div>
+                      <div className="column is-half">
+                        <Card style={{ backgroundColor: '#dff9fb' }}>
+                          <CardContent>
+                            <Typography variant="h6" gutterBottom>
+                              Maize
+                            </Typography>
+                            <Typography variant="body1">Expected growth: 3 months</Typography>
+                            <Typography variant="body1">Profit: Medium</Typography>
+                          </CardContent>
+                        </Card>
+                      </div>
+                    </div>
+                    <div style={{ marginTop: '20px' }}>
+                      <Typography variant="h6" gutterBottom>
+                        Crop Recommendation Statistics
+                      </Typography>
+                      <ResponsiveContainer width="100%" height={300}>
+                        <LineChart data={data}>
+                          <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+                          <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                          <XAxis dataKey="name" />
+                          <YAxis />
+                          <Tooltip />
+                        </LineChart>
+                      </ResponsiveContainer>
+                    </div>
+                  </div>
+                ) : (
+                  <p className="has-text-dark">No recommendations to show. Please fill out the form and click Submit.</p>
+                )}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       {warning && (
-        <Snackbar open={Boolean(warning)} autoHideDuration={6000} onClose={() => setWarning('')}>
+        <Snackbar open={true} autoHideDuration={6000} onClose={() => setWarning('')}>
           <Alert onClose={() => setWarning('')} severity="warning">
             {warning}
           </Alert>
         </Snackbar>
-      )}
-      {showRecommendations && (
-        <div style={{ marginTop: '20px' }}>
-          <Typography variant="h6" gutterBottom>
-            Crop Recommendations:
-          </Typography>
-          <Typography variant="body1">- Rice (Yearly throughout, profit: high)</Typography>
-          <Typography variant="body1">- Maize (Profit: medium, expected growth: 3 months)</Typography>
-          <Grid container spacing={3}>
-            <Grid item xs={12} md={6}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h5" component="h2" gutterBottom>
-                    Crop Recommendation Statistics
-                  </Typography>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={data}>
-                      <Line type="monotone" dataKey="uv" stroke="#8884d8" />
-                      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Card>
-                <CardContent>
-                  <Typography variant="h5" component="h2" gutterBottom>
-                    Statistics
-                  </Typography>
-                  <ResponsiveContainer width="100%" height={300}>
-                    <LineChart data={data}>
-                      <Line type="monotone" dataKey="pv" stroke="#8884d8" />
-                      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
-                      <XAxis dataKey="name" />
-                      <YAxis />
-                      <Tooltip />
-                    </LineChart>
-                  </ResponsiveContainer>
-                </CardContent>
-              </Card>
-            </Grid>
-          </Grid>
-        </div>
       )}
     </div>
   );
 };
 
 export default CropRecommendation;
+
