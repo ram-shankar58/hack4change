@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { Grid, Typography, Button, TextField, MenuItem, FormControl, InputLabel, Select, Snackbar, Alert } from '@mui/material';
+import { Grid, Typography, Button, TextField, MenuItem, FormControl, InputLabel, Select, Snackbar, Alert, Card, CardContent } from '@mui/material';
+import { LineChart, Line, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip } from 'recharts';
 
+// import Layout from '../../layouts/protolayout';
 const months = [
   { value: 'January', label: 'January' },
   { value: 'February', label: 'February' },
@@ -18,6 +20,13 @@ const districts = [
   { value: 'District1', label: 'District 1' },
   { value: 'District2', label: 'District 2' },
   // Add other districts as needed
+];
+
+const data = [
+  { name: 'Jan', uv: 400, pv: 2400, amt: 2400 },
+  { name: 'Feb', uv: 300, pv: 2210, amt: 2290 },
+  { name: 'Mar', uv: 200, pv: 2290, amt: 2000 },
+  { name: 'Apr', uv: 278, pv: 2000, amt: 2181 }
 ];
 
 const CropRecommendation = () => {
@@ -139,6 +148,44 @@ const CropRecommendation = () => {
           </Typography>
           <Typography variant="body1">- Rice (Yearly throughout, profit: high)</Typography>
           <Typography variant="body1">- Maize (Profit: medium, expected growth: 3 months)</Typography>
+          <Grid container spacing={3}>
+            <Grid item xs={12} md={6}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    Crop Recommendation Statistics
+                  </Typography>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={data}>
+                      <Line type="monotone" dataKey="uv" stroke="#8884d8" />
+                      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <Card>
+                <CardContent>
+                  <Typography variant="h5" component="h2" gutterBottom>
+                    Statistics
+                  </Typography>
+                  <ResponsiveContainer width="100%" height={300}>
+                    <LineChart data={data}>
+                      <Line type="monotone" dataKey="pv" stroke="#8884d8" />
+                      <CartesianGrid stroke="#ccc" strokeDasharray="5 5" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                    </LineChart>
+                  </ResponsiveContainer>
+                </CardContent>
+              </Card>
+            </Grid>
+          </Grid>
         </div>
       )}
     </div>
