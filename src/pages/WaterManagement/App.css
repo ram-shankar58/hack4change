@@ -1,0 +1,177 @@
+/* src/App.css */
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial', sans-serif;
+  background: linear-gradient(135deg, #a2c2a1, #e3f9e5); /* Light green gradient */
+  overflow-x: hidden; /* Prevent horizontal scrolling */
+}
+
+.App {
+  max-width: 1000px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 15px;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  position: relative;
+}
+
+h1 {
+  color: #2e7d32; /* Dark green */
+  margin-bottom: 20px;
+  font-size: 2.5rem;
+}
+
+.form-card {
+  background-color: #e8f5e9;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centered alignment */
+  gap: 20px; /* Spacing between input groups */
+}
+
+.input-group {
+  flex: 1 1 300px; /* Adjusted for better responsiveness */
+  padding: 15px;
+  background-color: #f1f8f4;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.input-group:hover {
+  background-color: #c8e6c9;
+  transform: scale(1.05);
+}
+
+.input-group label {
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #333;
+  display: flex;
+  align-items: center;
+  font-size: 1.2rem;
+}
+
+.input-group label::before {
+  content: attr(data-icon);
+  font-family: 'FontAwesome';
+  font-size: 1.5rem;
+  margin-right: 10px;
+  color: #4caf50;
+}
+
+.input-group input,
+.input-group select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  transition: border-color 0.3s, background-color 0.3s;
+}
+
+.input-group input:focus,
+.input-group select:focus {
+  border-color: #4caf50;
+  background-color: #f1f8f4;
+  outline: none;
+}
+
+.submit-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 15px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 20px;
+}
+
+.submit-button:hover {
+  background-color: #45a049;
+}
+
+.loading {
+  margin-top: 20px;
+  color: #4caf50;
+  font-size: 1.2rem;
+}
+
+.result {
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #e7f3f4;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.result h2 {
+  color: #333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.result-row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between result boxes */
+}
+
+.result-box {
+  flex: 1 1 calc(33.333% - 20px); /* Responsive sizing for result boxes */
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+.result-box p {
+  margin: 10px 0 0 0;
+  font-size: 1rem;
+  color: #555;
+}
+
+.result-box p strong {
+  color: #333;
+}
+
+.progress-bar {
+  width: 150px;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+/* Add different colors for each progress bar */
+.progress-bar:nth-of-type(1) .CircularProgressbar-path {
+  stroke: #32cd32; /* Green */
+}
+
+.progress-bar:nth-of-type(2) .CircularProgressbar-path {
+  stroke: #ffa500; /* Orange */
+}
+
+.progress-bar:nth-of-type(3) .CircularProgressbar-path {
+  stroke: #1e90ff; /* Blue */
+}
+
+.progress-bar:nth-of-type(4) .CircularProgressbar-path {
+  stroke: #6a5acd; /* Purple */
+}
