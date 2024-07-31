@@ -1,0 +1,125 @@
+/* Ensures the HTML and body take up the full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Basic styling for the body element */
+body {
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4; /* Light gray background color */
+  color: #333; /* Darker text color for better readability */
+}
+
+/* Styling for the header element */
+header {
+  background-color: #4CAF50; /* Green background for header */
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow for better separation */
+}
+
+/* Styling for the main content area */
+main {
+  flex: 1;
+  padding: 2em;
+}
+
+/* Container for the cards */
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+/* Styling for individual cards */
+.card {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  margin: 1em;
+  padding: 1em;
+  width: 200px;
+  text-align: center;
+  transition: box-shadow 0.3s ease; /* Smooth transition for shadow effect */
+}
+
+/* Hover effect for cards */
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Styling for card headings */
+.card h2 {
+  margin-top: 0;
+  font-size: 1.2em; /* Slightly larger font size for headings */
+}
+
+/* Styling for status text */
+.status {
+  font-weight: bold;
+  color: #4CAF50;
+}
+
+/* Styling for date text */
+.date {
+  font-weight: bold;
+  color: #FF5722;
+}
+
+/* Styling for energy potential text */
+.energy {
+  font-weight: bold;
+  color: #2196F3;
+}
+
+/* Styling for the footer element */
+footer {
+  text-align: center;
+  padding: 1em 0;
+  background-color: #4CAF50; /* Green background for footer */
+  color: white;
+  position: relative;
+  width: 100%;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.1); /* Subtle shadow for separation */
+}
+
+/* Styling for the form container */
+.form-container {
+  margin-top: 2em; /* Add margin to separate the form from the footer */
+  padding: 1em;
+  background-color: white; /* White background for better contrast */
+  border-radius: 8px; /* Rounded corners for the form container */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Shadow for visual depth */
+}
+
+/* Styling for input fields */
+input[type="text"], input[type="date"], input[type="number"] {
+  width: 100%;
+  padding: 0.8em;
+  margin-bottom: 1em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Styling for buttons */
+button {
+  background-color: #4CAF50; /* Green background for buttons */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 0.8em 1.2em;
+  font-size: 1em;
+  cursor: pointer;
+  transition: background-color 0.3s ease; /* Smooth transition for background color */
+}
+
+/* Hover effect for buttons */
+button:hover {
+  background-color: #45a049; /* Darker green on hover */
+}
