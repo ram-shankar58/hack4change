@@ -1,84 +1,96 @@
-import React, { useState } from 'react';
-import { Card, CardContent, Typography, Snackbar, Alert } from '@mui/material';
-import 'bulma/css/bulma.min.css';
+import React from 'react';
+import { Container, Typography, Button, Grid, Box, Paper } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
+// Styled components
+const HeroSection = styled(Box)(({ theme }) => ({
+  backgroundColor: theme.palette.primary.main,
+  color: theme.palette.primary.contrastText,
+  padding: theme.spacing(4),
+  textAlign: 'center',
+  borderRadius: theme.shape.borderRadius,
+}));
+
+const FeatureCard = styled(Paper)(({ theme }) => ({
+  padding: theme.spacing(3),
+  textAlign: 'center',
+  backgroundColor: theme.palette.background.paper,
+  boxShadow: theme.shadows[3],
+  transition: 'transform 0.3s',
+  '&:hover': {
+    transform: 'scale(1.05)',
+  },
+}));
 
 const HomePage = () => {
-  const [pincode, setPincode] = useState('');
-  const [showRecommendations, setShowRecommendations] = useState(false);
-  const [warning, setWarning] = useState('');
-
-  const handleSubmit = () => {
-    if (!pincode) {
-      setWarning('Please enter your pincode.');
-      return;
-    }
-
-    setShowRecommendations(true);
-    setWarning('');
-  };
-
-  const recommendations = [
-    { title: 'Crop Recommendation', description: 'Based on your location, the best crops to grow are:', crops: ['Rice (Yearly, high profit)', 'Maize (3 months, medium profit)'] },
-    { title: 'Waste Management', description: 'Recommended waste management practices for your area include:', practices: ['Recycling', 'Composting'] },
-    { title: 'Water Management', description: 'Effective water management techniques for your area are:', techniques: ['Rainwater Harvesting', 'Drip Irrigation'] },
-    { title: 'Solar Management', description: 'Optimal solar management practices for your area include:', practices: ['Solar Panels', 'Solar Water Heaters'] },
-  ];
-
   return (
-    <div className="section" style={{ backgroundColor: '#f4f4f4', minHeight: '100vh' }}>
-      <div className="container">
-        <div className="box has-background-light p-6">
-          <h1 className="title is-2 has-text-centered">Home Dashboard</h1>
-          <div className="field">
-            <label className="label">Enter Pincode</label>
-            <div className="control">
-              <input
-                className="input"
-                type="text"
-                value={pincode}
-                onChange={(e) => setPincode(e.target.value)}
-                placeholder="Enter your location pincode"
-              />
-            </div>
-          </div>
-          <div className="field">
-            <div className="control">
-              <button className="button is-primary" onClick={handleSubmit}>
-                Submit
-              </button>
-            </div>
-          </div>
-          {showRecommendations && (
-            <div className="columns is-multiline">
-              {recommendations.map((rec, index) => (
-                <div className="column is-half" key={index}>
-                  <Card style={{ backgroundColor: '#dff9fb' }}>
-                    <CardContent>
-                      <Typography variant="h6" gutterBottom>
-                        {rec.title}
-                      </Typography>
-                      <Typography variant="body1">{rec.description}</Typography>
-                      <ul>
-                        {rec.crops ? rec.crops.map((crop, idx) => <li key={idx}>{crop}</li>) : null}
-                        {rec.practices ? rec.practices.map((practice, idx) => <li key={idx}>{practice}</li>) : null}
-                        {rec.techniques ? rec.techniques.map((technique, idx) => <li key={idx}>{technique}</li>) : null}
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
-      {warning && (
-        <Snackbar open={true} autoHideDuration={6000} onClose={() => setWarning('')}>
-          <Alert onClose={() => setWarning('')} severity="warning">
-            {warning}
-          </Alert>
-        </Snackbar>
-      )}
-    </div>
+    <Container>
+      <HeroSection>
+        <Typography variant="h2" component="h1" gutterBottom>
+          Welcome to Agriculture Resource Mangement System!
+        </Typography>
+        <Typography variant="h5" component="h2" gutterBottom>
+          Discover solutions for Crop Recommendation, Waste Management, Water Management, and Solar Energy.
+        </Typography>
+        <Button variant="contained" color="secondary" href="/crop" sx={{ mt: 2 }}>
+          Get Started with Crop Recommendation
+        </Button>
+      </HeroSection>
+      <Grid container spacing={3} sx={{ mt: 4 }}>
+        <Grid item xs={12} md={6} lg={3}>
+          <FeatureCard>
+            <Typography variant="h6" component="h3" gutterBottom>
+              Crop Recommendation
+            </Typography>
+            <Typography>
+              Optimize crop yields with our detailed recommendations based on your location and soil type.
+            </Typography>
+            <Button variant="outlined" sx={{ mt: 2 }} href="/crop">
+              Learn More
+            </Button>
+          </FeatureCard>
+        </Grid>
+        <Grid item xs={12} md={6} lg={3}>
+          <FeatureCard>
+            <Typography variant="h6" component="h3" gutterBottom>
+              Waste Management
+            </Typography>
+            <Typography>
+              Improve waste management efficiency with our innovative solutions and insights.
+            </Typography>
+            <Button variant="outlined" sx={{ mt: 2 }} href="/waste">
+              Learn More
+            </Button>
+          </FeatureCard>
+        </Grid>
+        <Grid item xs={12} md={6} lg={3}>
+          <FeatureCard>
+            <Typography variant="h6" component="h3" gutterBottom>
+              Water Management
+            </Typography>
+            <Typography>
+              Ensure sustainable water usage with our advanced management tools and data analysis.
+            </Typography>
+            <Button variant="outlined" sx={{ mt: 2 }} href="/water">
+              Learn More
+            </Button>
+          </FeatureCard>
+        </Grid>
+        <Grid item xs={12} md={6} lg={3}>
+          <FeatureCard>
+            <Typography variant="h6" component="h3" gutterBottom>
+              Solar Management
+            </Typography>
+            <Typography>
+              Maximize your solar energy output with our comprehensive management system.
+            </Typography>
+            <Button variant="outlined" sx={{ mt: 2 }} href="/solar">
+              Learn More
+            </Button>
+          </FeatureCard>
+        </Grid>
+      </Grid>
+    </Container>
   );
 };
 

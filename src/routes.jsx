@@ -5,11 +5,14 @@ import SolarApp from './pages/SolarManagement';
 import App from './pages/WasteManagement';
 import WaterApp from './pages/WaterManagement';
 import HomePage from './pages/Dashboard';
+import Header from './components/Header';
 
 const Approutes = ()=>{
     return(
         <BrowserRouter>
+        <Header />
         <Routes>
+            {/* <Header /> */}
             {/* <Route path="/" element={<Dashboard />} /> */}
             <Route path="/crop" element={<CropRecommendation />} />
             <Route path="/waste" element={<App />} />
