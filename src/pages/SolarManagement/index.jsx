@@ -66,7 +66,7 @@ const SolarLandingPage = () => (
       <Typography variant="h5" component="h2" gutterBottom>
         Enter your location and land area to get detailed solar energy insights.
       </Typography>
-      <Button variant="contained" component={Link} to="/input">Get Started</Button>
+      <Button variant="contained" component={Link} to="/solar/input">Get Started</Button>
     </Box>
   </Container>
 );
@@ -78,7 +78,7 @@ const SolarInputForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    navigate('/solarinsights');
+    navigate('/solar/solarinsights');
   };
 
   return (
@@ -200,14 +200,11 @@ const SolarInsights = () => (
 
 const SolarApp = () => {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<SolarLandingPage />} />
-        <Route path="/input" element={<SolarInputForm />} />
-        <Route path="/solarinsights" element={<SolarInsights />} />
-        {/* Add routes for Features, Pricing, Support, Login */}
-      </Routes>
-    </Router>
+    <Routes>
+      <Route path="/" element={<SolarLandingPage />} />
+      <Route path="/input" element={<SolarInputForm />} />
+      <Route path="/solarinsights" element={<SolarInsights />} />
+    </Routes>
   );
 };
 

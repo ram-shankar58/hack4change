@@ -1,11 +1,13 @@
 // src/App.jsx
 import React from "react";
-import CropRecommendation from "./pages/CropRecommendation/index.jsx";
+// import CropRecommendation from "./pages/CropRecommendation/index.jsx";
+
+import Approutes from "./routes";
 
 const App = () => {
   return (
     <div>
-      <CropRecommendation />
+      <Approutes />
     </div>
   );
 };

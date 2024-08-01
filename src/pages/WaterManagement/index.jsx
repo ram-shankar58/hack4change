@@ -3,10 +3,9 @@
 import React, { useState } from 'react';
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { FaMapMarkerAlt, FaCalendarAlt } from 'react-icons/fa';
-import './App.css';
+import './watermanagement.css';
 
-const App = () => {
+const WaterApp = () => {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [state, setState] = useState('');
@@ -120,11 +119,9 @@ const App = () => {
           <h2>Results</h2>
           <div className="result-row">
             <div className="result-box">
-              <FaMapMarkerAlt size={50} color="#ff6347" />
               <p><strong>Location:</strong> {result.location}</p>
             </div>
             <div className="result-box">
-              <FaCalendarAlt size={50} color="#4682b4" />
               <p><strong>Time of Year:</strong> {result.timeOfYear}</p>
             </div>
           </div>
@@ -181,4 +178,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default WaterApp;

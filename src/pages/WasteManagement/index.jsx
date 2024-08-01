@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './WasteMgmt.css';
 
 // Calculate age in days
 const calculateAge = (nextCollectionDate) => {
